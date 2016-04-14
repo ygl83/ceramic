@@ -15,7 +15,7 @@ class GoodsService
 {
     public function getGoodList()
     {
-        return goods::all();
+        return goods::paginate(config('goods.posts_per_page'));
     }
 
 }

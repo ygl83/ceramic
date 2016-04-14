@@ -2,12 +2,11 @@
 
 return [
 
-    'title' => [
-        '石材',
-    ],
+    'title' => 
+        'ds'
+    ,
 
-    'posts_per_page' => [
+    'posts_per_page' => 
         '5',
-    ],
 
 ];

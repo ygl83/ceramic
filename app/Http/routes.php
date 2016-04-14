@@ -17,3 +17,20 @@ get('/', function () {
 
 get('goods', 'GoodsController@index');
 get('goods/{id}', 'GoodsController@showPost');
+
+//文件上传
+Route::post( 'goods/upload', 'FileUploadController@upload' );
+Route::get( 'goods/file_remove/{Uuid}/{AdUuid}', 'FileUploadController@remove' );
+
+get('admin', function () {
+    return redirect('/admin/goods_manage');
+});
+$router->group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
+    resource('admin/goods_manage', 'GoodsManageController');
+    get('admin/upload', 'UploadController@index');
+});
+
+// Logging in and out
+get('/auth/login', 'Auth\AuthController@getLogin');
+post('/auth/login', 'Auth\AuthController@postLogin');
+get('/auth/logout', 'Auth\AuthController@getLogout');

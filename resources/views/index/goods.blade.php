@@ -6,21 +6,21 @@
     <body>
         <div class="container">
             <h1>{{ config('goods.title') }}</h1>
-            <h5>Page {{ $posts->currentPage() }} of {{ $posts->lastPage() }}</h5>
+            <h5>Page {{ $goodsList->currentPage() }} of {{ $goodsList->lastPage() }}</h5>
             <hr>
             <ul>
-            @foreach ($posts as $post)
+            @foreach ($goodsList as $goods)
                 <li>
-                    <a href="/blog/{{ $post->slug }}">{{ $post->title }}</a>
-                    <em>({{ $post->published_at }})</em>
+                    <a href="/goods/{{ $goods->slug }}">{{ $goods->name }}</a>
+                    <em>({{ $goods->update_at }})</em>
                     <p>
-                        {{ str_limit($post->content) }}
+                        {{ str_limit($goods->descprtion) }}
                     </p>
                 </li>
             @endforeach
             </ul>
             <hr>
-            {!! $posts->render() !!}
+            {!! $goodsList->render() !!}
         </div>
     </body>
 </html>
