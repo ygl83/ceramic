@@ -25,8 +25,12 @@
                 <div class="panel-body">
 
                     @include('admin.partials.errors')
-
+                    @if ( isset($model->id) )
+                    <form action="{{  url('admin/goods_manage/'.$model->id) }}" class="form-horizontal" role="form" enctype="multipart/form-data" method="post">
+                    <input type="hidden" name="_method" value="PUT">
+                    @else 
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.goods_manage.store') }}">
+                    @endif
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         <div class="row">
@@ -81,10 +85,10 @@
                                       <div id="fileList" class="uploader-list">
                                           @if ( isset($imgList) )
                                             @foreach ( $imgList as $img)
-                                              <div class="file-item thumbnail " data="{{$img['ad_attachment_uuid']}}">
-                                                <img src="{{ asset('index/upload').'/'.$img['ad_attachment_uuid'].'.'.$img['extention'] }}">
+                                              <div class="file-item thumbnail " data="{{$img['id']}}">
+                                                <img src="{{ asset('index/upload').'/'.$img['image_uuid'].'.'.$img['extention'] }}">
                                                 <div class="info">{{ $img['original_name'] }}</div>
-                                                <a class="glyphicon glyphicon-remove btn-remove" data="{{$img['ad_attachment_uuid']}}" data-toggle="delete_image"></a>
+                                                <a class="glyphicon glyphicon-remove btn-remove" data="{{$img['id']}}" data-toggle="delete_image"></a>
                                               </div>      
                                             @endforeach
                                           @endif
@@ -143,7 +147,7 @@
   var uploader = WebUploader.create({
 
       // 选完文件后，是否自动上传。
-      //auto: true,
+      auto: true,
       swf: 'http://cdn.bootcss.com/webuploader/0.1.1/Uploader.swf',
       // 文件接收服务端。
       server: '{{ url('goods/upload') }}',
@@ -245,7 +249,7 @@ uploader.on( 'uploadAccept', function( file, response ) {
         //上传成功
         var $div = $( '#'+file.file.id );
 
-        var hidden=$('<input type="hidden" name="file[]" value="'+response.data+'" >');
+        var hidden=$('<input type="hidden" name="files[]" value="'+response.data+'" >');
         $div.append(hidden);
 
         return true;
@@ -282,4 +286,5 @@ uploader.on( 'uploadAccept', function( file, response ) {
   });
     });
 </script>
+<script src="/assets/js/goods/create.js"></script>
 @stop

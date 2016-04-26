@@ -51,7 +51,10 @@ return [
             'driver' => 'local',
             'root'   => public_path('index/upload'),
         ],
-
+        'index' => [
+            'driver' => 'local',
+            'root'   => public_path('index'),
+        ],
         'tmp' => [
             'driver' => 'local',
             'root'   => public_path('index/tmp_upload'),

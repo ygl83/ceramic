@@ -27,6 +27,8 @@ get('admin', function () {
 });
 $router->group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
     resource('admin/goods_manage', 'GoodsManageController');
+    Route::get( 'admin/goods_manage/delete/{id?}','GoodsManageController@delete' );
+    Route::post( 'admin/goods_manage/ajax','GoodsManageController@ajax' );
     get('admin/upload', 'UploadController@index');
 });
 
