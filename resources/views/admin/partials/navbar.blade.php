@@ -1,6 +1,6 @@
 <ul class="nav navbar-nav">
-    <li><a href="/">Blog Home</a></li>
-    @if (Auth::check())
+    <li><a href="/">主页</a></li>
+<!--     @if (Auth::check())
         <li @if (Request::is('admin/post*')) class="active" @endif>
             <a href="/admin/post">Posts</a>
         </li>
@@ -10,7 +10,7 @@
         <li @if (Request::is('admin/upload*')) class="active" @endif>
             <a href="/admin/upload">Uploads</a>
         </li>
-    @endif
+    @endif -->
 </ul>
 
 <ul class="nav navbar-nav navbar-right">

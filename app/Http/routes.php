@@ -16,7 +16,7 @@ get('/', function () {
 });
 
 get('goods', 'GoodsController@index');
-get('goods/{id}', 'GoodsController@showPost');
+//get('goods/{id}', 'GoodsController@showPost');
 
 //文件上传
 Route::post( 'goods/upload', 'FileUploadController@upload' );

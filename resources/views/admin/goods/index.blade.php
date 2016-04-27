@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row page-title-row">
         <div class="col-md-6">
-            <h3>goodsList <small>» Listing</small></h3>
+            <h3>商品管理 <small>» 商品列表</small></h3>
         </div>
         <div class="col-md-6 text-right">
             <a href="/admin/goods_manage/create" class="btn btn-success btn-md">
