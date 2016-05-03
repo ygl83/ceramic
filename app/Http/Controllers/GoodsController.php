@@ -7,14 +7,16 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Services\GoodsService as Goods;
+use App\Services\BannerService as Banner;
 
 class GoodsController extends Controller
 {
     protected $goods;
 
-    public function __construct(Goods $goods)
+    public function __construct(Goods $goods,Banner $banner)
     {
         $this->goods = $goods;
+        $this->banner = $banner;
     }
 
     /**
@@ -25,8 +27,10 @@ class GoodsController extends Controller
     public function index()
     {
         $goodsList = $this->goods->getGoodList();
+        $imageList = $this->banner->getBannerList();
         return view('index.goods')
-                ->with( 'goodsList',$goodsList );
+                ->with( 'goodsList',$goodsList)
+                ->with( 'imageList',$imageList);
     }
 
     /**

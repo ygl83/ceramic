@@ -30,6 +30,11 @@ $router->group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::get( 'admin/goods_manage/delete/{id?}','GoodsManageController@delete' );
     Route::post( 'admin/goods_manage/ajax','GoodsManageController@ajax' );
     get('admin/upload', 'UploadController@index');
+
+    //banner
+    resource('admin/banner', 'BannerController');
+    Route::get( 'admin/banner/delete/{id?}','BannerController@delete' );
+
 });
 
 // Logging in and out

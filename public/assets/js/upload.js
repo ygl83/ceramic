@@ -1,3 +1,6 @@
+   // 提示信息
+  var noPreview = "请提交";
+  var uploadFailed = "上传失败";
 
 var setHeader = function(object, data, headers) {
     headers['Access-Control-Allow-Origin'] = '*';
@@ -7,7 +10,7 @@ var setHeader = function(object, data, headers) {
 uploader.on('uploadBeforeSend ', setHeader);
 
 // 监听上传呈现缩略图
-uploader.on( 'fileQueued', function( file ) {alert(222);
+uploader.on( 'fileQueued', function( file ) {
     var $li = $(
             '<div id="' + file.id + '" class="file-item thumbnail new_file">' +
                 '<img>' +
@@ -87,7 +90,7 @@ uploader.on( 'uploadAccept', function( file, response ) {
         //上传成功
         var $div = $( '#'+file.file.id );
 
-        var hidden=$('<input type="hidden" name="file[]" value="'+response.data+'" >');
+        var hidden=$('<input type="hidden" name="files[]" value="'+response.data+'" >');
         $div.append(hidden);
 
         return true;
@@ -122,4 +125,21 @@ uploader.on( 'uploadError', function( file, code ) {
 uploader.on( 'uploadComplete', function( file ) {
     $( '#'+file.id ).find('.progress').remove();
 });
+/**
+ * 广告创建初始化脚本
+ */
+$.extend({
+    deleteFile: function()
+    {
+        $('[data-toggle="delete_image"]').bind('click', function()
+        {
+            var val = $(this).attr('data');
+            $('#fileList').append('<input type="hidden" name="delete_image[]" value='+val+'>');
+            $('div[data='+val+']').remove();
+        })
+    },
+})
+
+$.deleteFile();
+
 

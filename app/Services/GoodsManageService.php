@@ -72,11 +72,11 @@ class GoodsManageService
     	if(!isset($id))return false;
         $model = Goods::find($id);
         $deleteImageArr = $request->input('delete_image');
-        $image_id = $model->image_id;
+        $image_id = !$model->image_id?[]:$model->image_id;
         if($deleteImageArr)
     		$image_id = array_diff($image_id, $deleteImageArr);
     	if($fileData)
-    		$image_id += $fileData;
+    		$image_id = array_merge($fileData,$image_id);
     	if(count($image_id)>5)
     	{
     		return false;

@@ -1,16 +1,16 @@
 <ul class="nav navbar-nav">
     <li><a href="/">主页</a></li>
-<!--     @if (Auth::check())
-        <li @if (Request::is('admin/post*')) class="active" @endif>
-            <a href="/admin/post">Posts</a>
+    @if (Auth::check())
+        <li @if (Request::is('admin/goods_manage*')) class="active" @endif>
+            <a href="/admin/goods_manage">商品管理</a>
         </li>
-        <li @if (Request::is('admin/tag*')) class="active" @endif>
-            <a href="/admin/tag">Tags</a>
+        <li @if (Request::is('admin/banner*')) class="active" @endif>
+            <a href="/admin/banner">幻灯片</a>
         </li>
-        <li @if (Request::is('admin/upload*')) class="active" @endif>
+<!--         <li @if (Request::is('admin/upload*')) class="active" @endif>
             <a href="/admin/upload">Uploads</a>
         </li>
-    @endif -->
+ -->    @endif 
 </ul>
 
 <ul class="nav navbar-nav navbar-right">

@@ -55,7 +55,7 @@ class UploadService
     protected function moveToUploadFromTmp($fileDataArray)
     {
         $fileData = [];
-
+        $imageId = '';
         if(count($fileDataArray)>0)
         { 
             foreach ($fileDataArray as $file) 
@@ -134,6 +134,11 @@ class UploadService
     public function getUploadPath()
     {
         return public_path().'/index/'.$this->tmp_path;
+    }
+   	//获取图片列表
+	public function getImageList($arrayId = [])
+    {
+        return Image::find($arrayId);
     }
 
 }

@@ -10,7 +10,7 @@ namespace App\Services;
 
 
 use App\Goods as goods;
-use App\image as image;
+use App\Image as image;
 
 class GoodsService
 {
